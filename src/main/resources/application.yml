@@ -1,0 +1,17 @@
+server:
+  port: 8100
+spring:
+  application:
+    name: api-gateway
+cloud:
+  gateway:
+    routes:
+      - id: noteService
+        uri: http://localhost:8080/
+        predicates:
+         - Path=/notes/**
+
+      - id: taskService
+        uri: http://localhost:8081/
+        predicates:
+         - Path=/tasks/**
